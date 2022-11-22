@@ -1,0 +1,1 @@
+Dove Informazioni o redux toolkit saranno salvati

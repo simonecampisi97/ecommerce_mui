@@ -117,9 +117,10 @@ const CartMenu = () => {
                                                     <AddIcon/>
                                                 </IconButton>
                                             </Box>
+                                            {/* Price */}
+                                            <Typography fontWeight="bold">{item.attributes.price}</Typography>
                                         </FlexBox>
-                                        {/* Price */}
-                                        <Typography fontWeight="bold">{item.attributes.price}</Typography>
+
                                     </Box>
                                 </FlexBox>
                                 <Divider/>
@@ -128,6 +129,32 @@ const CartMenu = () => {
                     </Box>
 
                 {/*    Actions*/}
+                    <Box m="20px 0 ">
+                        <FlexBox m="20px 0 ">
+                            <Typography fontWeight="bold">SUBTOTAL</Typography>
+                            <Typography fontWeight="bold">${totalPrice}</Typography>
+                        </FlexBox>
+
+                        <Button
+                            sx={{
+                                backgroundColor: shades.primary[400],
+                                color: "white",
+                                borderRadius: 0,
+                                minWidth: "100%",
+                                padding: "20px 40px",
+                                m: "20px 0"
+                            }}
+
+                            onClick={ () => {
+                                navigate("/checkout");
+                                dispatch(setIsCarOpen({}));
+                            } }
+                        >
+                        CHECKOUT
+                        </Button>
+
+                    </Box>
+
 
                 </Box>
 

@@ -22,14 +22,41 @@ export const cartSlice = createSlice({
 
         removeFromCart: (state,action) =>{
             state.cart = state.cart.filter((item) => item.id !== state.payload.id);
-        }
+        },
+
+        increaseCount: (state, action) =>{
+            state.cart = state.cart.map( (item) =>{
+
+                if( item.id === action.payload.id) item.count ++;
+
+                return item;
+            })
+        },
+
+        decreaseCount: (state, action) =>{
+            state.cart = state.cart.map( (item) =>{
+
+                if( item.id === action.payload.id && item.count > 1) item.count--;
+                return item;
+            })
+        },
+
+        setIsCarOpen: (state) => {
+            state.isCartOpen = !state.isCartOpen
+        },
+
 
     }
 
 })
 
 export const {
-    setItems
+    setItems,
+    addToCart,
+    removeFromCart,
+    increaseCount,
+    decreaseCount,
+    setIsCarOpen
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

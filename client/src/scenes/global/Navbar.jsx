@@ -7,7 +7,7 @@ import {
     MenuOutlined,
     SearchOutlined
 } from "@mui/icons-material";
-
+import {setIsCarOpen} from "../../state";
 import {useNavigate} from "react-router-dom";
 import {shades} from "../../theme";
 
@@ -15,6 +15,7 @@ const Navbar = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const cart = useSelector((state)=> state.cart.cart)
 
 
     return (
@@ -23,7 +24,7 @@ const Navbar = () => {
         alignItems="center"
         width="100%"
         height="60px"
-        backgroudColor="rgba(255,255,255,0.95)"
+        backgroundColor="rgba(20,137,161,0.95)"
         color="black"
         position="fixed"
         top="0"
@@ -40,9 +41,9 @@ const Navbar = () => {
                 <Box
                     onClick={() => navigate("/")}
                     sx = {{ '&:hover': {cursor: "pointer"} }}
-                    color={shades.secondary[500]}
+                    color={shades.neutral[500]}
                 >
-                    ECOMMERCE
+                    ECOMMER
                 </Box>
                 <Box
                     display = "flex"
@@ -58,13 +59,35 @@ const Navbar = () => {
                         <PersonOutline/>
                     </IconButton>
 
-                    <IconButton sx={{color: "black"}}>
-                        <ShoppingBagOutlined/>
-                    </IconButton>
+                    {/*Badge è per il numerino in alto al carrello*/}
+                    <Badge
+                        badgeContent={cart.length}
+                        color = "secondary"
+                        invisible={cart.length === 0}
+                        sx = {{
+                            "& .MuiBadge-badge":{
+                                right: 5,
+                                top: 5,
+                                padding: "0 4px",
+                                height: "13px",
+                                minWidth: "13px",
 
-                    <IconButton sx={{color: "black"}}>
-                        <MenuOutlined/>
-                    </IconButton>
+                            }
+
+                        }}
+                    >
+                        <IconButton
+                            onClick={() => dispatch(setIsCarOpen({}))}
+                            sx={{color: "black"}}
+                        >
+                            <ShoppingBagOutlined/>
+                        </IconButton>
+
+                    </Badge>
+
+                        <IconButton sx={{color: "black"}}>
+                            <MenuOutlined/>
+                        </IconButton>
 
 
                 </Box>

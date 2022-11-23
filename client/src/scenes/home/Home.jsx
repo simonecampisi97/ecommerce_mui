@@ -1,9 +1,12 @@
 import React from 'react';
+import MainCarousel from "./MainCarousel"
+import ShoppingList from "./ShoppingList"
 
 const Home = () => {
     return (
-        <div>
-
+        <div className="home">
+            <MainCarousel/>
+            <ShoppingList/>
         </div>
     );
 };

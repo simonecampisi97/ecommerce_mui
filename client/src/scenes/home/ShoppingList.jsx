@@ -15,7 +15,6 @@ const ShoppingList = () => {
 
 
     const handleChange = (event, newValue) =>{
-
         setValue(newValue);
     };
 
